@@ -17,7 +17,7 @@
 			switch($_GET['tipo']){
 				case 1: // crear usuario
 					$command = new MongoDB\Driver\Command(array('eval' => "siguienteUsuario(\"usuario\")"));
-					$cursor = $manager->executeCommand('Proyecto', $command);
+					$cursor = $m->executeCommand('Proyecto', $command);
 					print_r($cursor->toArray());
 					$bulk->insert(['id' => 'siguienteUsuario()','nombre' => $_GET['nombre'],
 						'apellido' => $_GET['apellido'],'edad' => $_GET['edad'],'nickname' => $_GET['usuario'],
