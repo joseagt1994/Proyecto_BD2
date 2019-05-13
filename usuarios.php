@@ -14,11 +14,12 @@
 		$options = [];
 
 		// atributos
-		var $nombre = "";
-		var $apellido = "";
-		var $edad = "";
-		var $usuario = "";
-		var $pass = "";
+		$codigo = $_GET['mcodigo'];
+		$nombre = "";
+		$apellido = "";
+		$edad = "";
+		$usuario = "";
+		$pass = "";
 
 		if(isset($_GET['tipo'])){
 			switch($_GET['tipo']){
@@ -42,6 +43,7 @@
 						$edad = $row->edad;
 						$usuario = $row->nickname;
 						$pass = $row->password;
+						print_r( "Exito!" );
 						break;
 					}
 					$filter = [];
