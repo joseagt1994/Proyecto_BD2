@@ -27,7 +27,7 @@
 					$cod = $cursor->toArray()[0]->retval;
 					$bulk->insert(['codigo' => $cod,'nombre' => $_GET['nombre'],
 						'precio' => $_GET['precio'],'stock' => $_GET['stock']]);
-					$m->executeBulkWrite('Proyecto.usuarios', $bulk, $writeConcern);
+					$m->executeBulkWrite('Proyecto.productos', $bulk, $writeConcern);
 					break;
 				case 2: // buscar usuario
 					$query = new MongoDB\Driver\Query($filter,$options);
@@ -78,7 +78,7 @@
 		<input type="hidden" name="tipo" id="tipo"/>
 		Nombre: <input type="text" name="nombre"/> Precio: <input type="text" name="precio"/><br/>
 		Stock: <input type="text" name="stock"/> 
-		<input type="submit" value="Crear usuario" onclick="cambiar(1)"/>
+		<input type="submit" value="Crear producto" onclick="cambiar(1)"/>
 
 
 	<h3>Modificar producto</h3>
