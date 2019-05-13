@@ -33,9 +33,8 @@
 					$m->executeBulkWrite('Proyecto.usuarios', $bulk, $writeConcern);
 					break;
 				case 2: // buscar usuario
-					print_r("Usuario: ".$_GET['mcodigo']);
-					$filter = ['codigo' => $_GET['mcodigo']];
-					$query = new MongoDB\Driver\Query($filter,$options);
+					$f = ['codigo' => $_GET['mcodigo']];
+					$query = new MongoDB\Driver\Query($f,[]);
 					$rows = $m->executeQuery('Proyecto.usuarios', $query);
 					print_r($rows);
 					foreach($rows as $row){
@@ -47,7 +46,6 @@
 						print_r( "Exito!" );
 						break;
 					}
-					$filter = [];
 					break;
 				case 3: // modificar usuario
 					$bulk->update(['codigo' => $_GET['mcodigo']], ['$set' => ['nombre' => $_GET['mnombre']]]);
