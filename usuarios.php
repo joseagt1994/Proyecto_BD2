@@ -34,7 +34,7 @@
 					$m->executeBulkWrite('Proyecto.usuarios', $bulk, $writeConcern);
 					break;
 				case 2: // buscar usuario
-					$filter = ['codigo' => $_GET['mcodigo']];
+					$filter = ['codigo' => $GET['mcodigo']];
 					$query = new MongoDB\Driver\Query($filter,$options);
 					$rows = $m->executeQuery('Proyecto.usuarios', $query);
 					print_r($rows);
