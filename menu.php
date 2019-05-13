@@ -19,7 +19,7 @@
 
 <body>
 	<h1> Menu Principal </h1>
-	<p> Bienvenido! </p><?php $_SESSION['login']?>
+	<p> Bienvenido <?php echo $_SESSION['login']?>!</p>
 	
 	<form action="<?php $_PHP_SELF?>" method="GET">
 		<input type="hidden" id="tipo" name="tipo"/>
