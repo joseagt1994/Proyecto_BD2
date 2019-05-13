@@ -9,7 +9,7 @@
 		$bulk = new MongoDB\Driver\BulkWrite(['ordered' => true]);
 		$writeConcern = new MongoDB\Driver\WriteConcern(MongoDB\Driver\WriteConcern::MAJORITY, 1000);
 		
-		// Listar todos los usuarios para mostrar
+		// Listar todos los productos para mostrar
 		$filter = [];
 		$options = [];
 
@@ -21,7 +21,7 @@
 
 		if(isset($_GET['tipo'])){
 			switch($_GET['tipo']){
-				case 1: // crear usuario
+				case 1: // crear producto
 					$command = new MongoDB\Driver\Command(array('eval' => "siguienteProducto(\"producto\")"));
 					$cursor = $m->executeCommand('Proyecto', $command);
 					$cod = $cursor->toArray()[0]->retval;
@@ -29,7 +29,7 @@
 						'precio' => $_GET['precio'],'stock' => $_GET['stock']]);
 					$m->executeBulkWrite('Proyecto.productos', $bulk, $writeConcern);
 					break;
-				case 2: // buscar usuario
+				case 2: // buscar producto
 					$query = new MongoDB\Driver\Query($filter,$options);
 					$rows = $m->executeQuery('Proyecto.productos', $query);
 					foreach($rows as $row){
@@ -41,7 +41,7 @@
 						}
 					}
 					break;
-				case 3: // modificar usuario
+				case 3: // modificar producto
 					$c = "db.productos.update({\"codigo\":".$_GET['mcodigo']."},";
 					$c = $c . "{\"codigo\":\"".$_GET['mcodigo']."\"";
 					if(isset($_GET['mnombre'])){ $c = $c . ",\"nombre\":\"".$_GET['mnombre']."\""; }
@@ -51,11 +51,11 @@
 					$command = new MongoDB\Driver\Command(array('eval' => $c));
 					$cursor = $m->executeCommand('Proyecto', $command);
 					break;
-				case 4: // borrar usuario
+				case 4: // borrar producto
 					$command = new MongoDB\Driver\Command(array('eval' => "db.productos.remove({\"codigo\": ".$_GET['bcodigo']."})"));
 					$cursor = $m->executeCommand('Proyecto', $command);
 					break;
-				default: // listar usuario
+				default: // listar producto
 					$filter = ['nombre' => $_GET['lnombre']];	
 					break;
 			}	
@@ -85,7 +85,7 @@
 
 		Codigo: <input type="text" name="mcodigo" value="<?php echo $codigo ?>"/> <input type="submit" value="Buscar" onclick="cambiar(2)"/> <br/><br/>
 		Nombre: <input type="text" name="mnombre" value="<?php echo $nombre ?>"/> Precio: <input type="text" name="mprecio" value="<?php echo $precio ?>"/><br/>
-		Stock: <input type="text" name="mstock" value="<?php echo $edad ?>"/>
+		Stock: <input type="text" name="mstock" value="<?php echo $stock ?>"/>
 		<input type="submit" value="Modificar producto" onclick="cambiar(3)"/>
 
 
