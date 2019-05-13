@@ -16,6 +16,9 @@
 		if(isset($_GET['tipo'])){
 			switch($_GET['tipo']){
 				case 1: // crear usuario
+					$command = new MongoDB\Driver\Command(array('eval' => "siguienteUsuario(\"usuario\")"));
+					$cursor = $manager->executeCommand('Proyecto', $command);
+					print_r($cursor->toArray());
 					$bulk->insert(['id' => 'siguienteUsuario()','nombre' => $_GET['nombre'],
 						'apellido' => $_GET['apellido'],'edad' => $_GET['edad'],'nickname' => $_GET['usuario'],
 						'password' => $_GET['password']]);
@@ -68,7 +71,6 @@
 	<h3>Crear un nuevo usuario</h3>
 	<form>
 		<input type="hidden" name="tipo" id="tipo"/>
-		Codigo: <input type="text" name="codigo"/> <input type="submit" value="Buscar"/> <br/><br/>
 		Nombre: <input type="text" name="nombre"/> Apellido: <input type="text" name="apellido"/><br/>
 		Edad: <input type="text" name="edad"/> Usuario: <input type="text" name="usuario"/> Password: <input type="text" name="password"/>
 		<input type="submit" value="Crear usuario" onclick="cambiar(1)"/>
