@@ -45,8 +45,8 @@
 					$c = "db.productos.update({\"codigo\":".$_GET['mcodigo']."},";
 					$c = $c . "{\"codigo\":\"".$_GET['mcodigo']."\"";
 					if(isset($_GET['mnombre'])){ $c = $c . ",\"nombre\":\"".$_GET['mnombre']."\""; }
-					if(isset($_GET['mprecio'])){ $c = $c . ",\"precio\":\"".$_GET['mprecio']."\""; }
-					if(isset($_GET['mstock'])){ $c = $c . ",\"stock\":\"".$_GET['mstock']."\""; }
+					if(isset($_GET['mprecio'])){ $c = $c . ",\"precio\":".$_GET['mprecio'].""; }
+					if(isset($_GET['mstock'])){ $c = $c . ",\"stock\":".$_GET['mstock'].""; }
 					$c = $c . "});";
 					$command = new MongoDB\Driver\Command(array('eval' => $c));
 					$cursor = $m->executeCommand('Proyecto', $command);
