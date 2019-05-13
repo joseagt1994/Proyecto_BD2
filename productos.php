@@ -86,7 +86,7 @@
 		Codigo: <input type="text" name="mcodigo" value="<?php echo $codigo ?>"/> <input type="submit" value="Buscar" onclick="cambiar(2)"/> <br/><br/>
 		Nombre: <input type="text" name="mnombre" value="<?php echo $nombre ?>"/> Precio: <input type="text" name="mprecio" value="<?php echo $precio ?>"/><br/>
 		Stock: <input type="text" name="mstock" value="<?php echo $edad ?>"/>
-		<input type="submit" value="Modificar usuario" onclick="cambiar(3)"/>
+		<input type="submit" value="Modificar producto" onclick="cambiar(3)"/>
 
 
 	<h3>Borrar producto</h3>
