@@ -20,7 +20,7 @@
 					$cursor = $m->executeCommand('Proyecto', $command);
 					$cod = $cursor->toArray()[0]->retval;
 					print_r($cod);
-					$bulk->insert(['id' => $cod,'nombre' => $_GET['nombre'],
+					$bulk->insert(['codigo' => $cod,'nombre' => $_GET['nombre'],
 						'apellido' => $_GET['apellido'],'edad' => $_GET['edad'],'nickname' => $_GET['usuario'],
 						'password' => $_GET['password']]);
 					$m->executeBulkWrite('Proyecto.usuarios', $bulk, $writeConcern);
