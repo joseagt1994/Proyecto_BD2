@@ -33,7 +33,7 @@
 						$pass = $row->password;
 						break;
 					}
-					$filter = "";
+					$filter = [];
 					break;
 				case 3: // modificar usuario
 					$bulk->update(['codigo' => $_GET['mcodigo']], ['$set' => ['nombre' => $_GET['mnombre']]]);
