@@ -27,14 +27,14 @@
 					$command = new MongoDB\Driver\Command(array('eval' => "siguienteUsuario(\"usuario\")"));
 					$cursor = $m->executeCommand('Proyecto', $command);
 					$cod = $cursor->toArray()[0]->retval;
-					print_r($cod);
 					$bulk->insert(['codigo' => $cod,'nombre' => $_GET['nombre'],
 						'apellido' => $_GET['apellido'],'edad' => $_GET['edad'],'nickname' => $_GET['usuario'],
 						'password' => $_GET['password']]);
 					$m->executeBulkWrite('Proyecto.usuarios', $bulk, $writeConcern);
 					break;
 				case 2: // buscar usuario
-					$filter = ['codigo' => $GET['mcodigo']];
+					print_r("Usuario: ".$_GET['mcodigo']);
+					$filter = ['codigo' => $_GET['mcodigo']];
 					$query = new MongoDB\Driver\Query($filter,$options);
 					$rows = $m->executeQuery('Proyecto.usuarios', $query);
 					print_r($rows);
@@ -58,6 +58,7 @@
 					$m->executeBulkWrite('Proyecto.usuarios', $bulk, $writeConcern);
 					break;
 				case 4: // borrar usuario
+					print_r("Eliminando usuario ".$_GET['bcodigo']);
 					$bulk->delete(['codigo' => $_GET['bcodigo']]);
 					$m->executeBulkWrite('Proyecto.usuarios', $bulk, $writeConcern);
 					break;
