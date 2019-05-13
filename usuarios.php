@@ -57,10 +57,12 @@
 					break;
 				case 4: // borrar usuario
 					print_r("Eliminando usuario ".$_GET['bcodigo']);
-					$bulk = new MongoDB\Driver\BulkWrite;
-					$bulk->delete(['codigo' => '48'], ['limit' => '1']);
-					$m = new MongoDB\Driver\Manager("mongodb://192.168.1.24:27017");
-					$m->executeBulkWrite('Proyecto.usuarios', $bulk);
+					//$bulk = new MongoDB\Driver\BulkWrite;
+					//$bulk->delete(['codigo' => '48'], ['limit' => '1']);
+					//$m = new MongoDB\Driver\Manager("mongodb://192.168.1.24:27017");
+					//$m->executeBulkWrite('Proyecto.usuarios', $bulk);
+					$command = new MongoDB\Driver\Command(array('eval' => "db.usuarios.remove({\"codigo\": \"".$_GET['bcodigo']."\"})"));
+					$cursor = $m->executeCommand('Proyecto', $command);
 					break;
 				default: // listar usuario
 					$filter = ['nombre' => $_GET['lnombre'],'apellido' => $_GET['lapellido']];	
