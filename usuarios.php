@@ -25,7 +25,7 @@
 					$filter = ['codigo' => $_GET['mcodigo']];
 					$query = new MongoDB\Driver\Query($filter,$options);
 					$rows = $m->executeQuery('Proyecto.usuarios', $query);
-					for($rows as $row){
+					foreach($rows as $row){
 						$nombre = $row->nombre;
 						$apellido = $row->apellido;
 						$edad = $row->edad;
@@ -100,7 +100,7 @@
 				<th>Password</th>
 			</tr>
 			<?php
-				for($usuarios as $u){
+				foreach($usuarios as $u){
 					echo "<td>".$u->codigo"</td>".PHP_EOL;
 					echo "<td>".$u->nombre"</td>".PHP_EOL;
 					echo "<td>".$u->apellido"</td>".PHP_EOL;
