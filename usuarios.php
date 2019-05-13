@@ -42,13 +42,20 @@
 							$edad = $row->edad;
 							$usuario = $row->nickname;
 							$pass = $row->password;
-							print_r( "Exito!" );
 							break;
 						}
 					}
 					break;
 				case 3: // modificar usuario
-					$command = new MongoDB\Driver\Command(array('eval' => "db.usuarios.update({\"codigo\":".$_GET['mcodigo']."},{\"nombre\":\"".$_GET['mnombre']."\",\"apellido\":\"".$_GET['mapellido']."\",\"edad\":".$_GET['medad'].",\"nickname\":\"".$_GET['musuario']."\",\"password\":\"".$_GET['mpassword']."\",\"codigo\":".$_GET['mcodigo']."});"));
+					$c = "db.usuarios.update({\"codigo\":".$_GET['mcodigo']."},";
+					$c = $c . "{\"codigo\":\"".$_GET['mcodigo']."\"";
+					if(isset($_GET['mnombre'])){ $c = $c . ",\"nombre\":\"".$_GET['mnombre']."\""; }
+					if(isset($_GET['mapellido'])){ $c = $c . ",\"apellido\":\"".$_GET['mapellido']."\""; }
+					if(isset($_GET['medad'])){ $c = $c . ",\"edad\":\"".$_GET['medad']."\""; }
+					if(isset($_GET['musuario'])){ $c = $c . ",\"nickname\":\"".$_GET['musuario']."\""; }
+					if(isset($_GET['mpassword'])){ $c = $c . ",\"password\":\"".$_GET['mpassword']."\""; }
+					$c = $c . "});";
+					$command = new MongoDB\Driver\Command(array('eval' => $c"));
 					$cursor = $m->executeCommand('Proyecto', $command);
 					break;
 				case 4: // borrar usuario
