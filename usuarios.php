@@ -18,10 +18,9 @@
 				case 1: // crear usuario
 					$command = new MongoDB\Driver\Command(array('eval' => "siguienteUsuario(\"usuario\")"));
 					$cursor = $m->executeCommand('Proyecto', $command);
-					print_r($cursor->toArray[0]->retval);
-					print_r($cursor->toArray[0][retval]);
-					print_r($_cursor->toArray[0]["retval"]);
-					$bulk->insert(['id' => $cursor->toArray()[0]->retval,'nombre' => $_GET['nombre'],
+					$cod = $cursor->toArray()[0]->retval;
+					print_r($cod);
+					$bulk->insert(['id' => $cod,'nombre' => $_GET['nombre'],
 						'apellido' => $_GET['apellido'],'edad' => $_GET['edad'],'nickname' => $_GET['usuario'],
 						'password' => $_GET['password']]);
 					$m->executeBulkWrite('Proyecto.usuarios', $bulk, $writeConcern);
