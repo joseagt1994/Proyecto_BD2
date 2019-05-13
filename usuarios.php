@@ -22,7 +22,7 @@
 					$m->executeBulkWrite('Proyecto.usuarios', $bulk, $writeConcern);
 					break;
 				case 2: // buscar usuario
-					$filter = ['' => $_GET['mcodigo']];
+					$filter = ['codigo' => $_GET['mcodigo']];
 					$query = new MongoDB\Driver\Query($filter,$options);
 					$rows = $m->executeQuery('Proyecto.usuarios', $query);
 					for($rows as $row){
