@@ -13,6 +13,13 @@
 		$filter = [];
 		$options = [];
 
+		// atributos
+		$nombre = "";
+		$apellido = "";
+		$edad = "";
+		$usuario = "";
+		$pass = "";
+
 		if(isset($_GET['tipo'])){
 			switch($_GET['tipo']){
 				case 1: // crear usuario
