@@ -33,18 +33,18 @@
 					$m->executeBulkWrite('Proyecto.usuarios', $bulk, $writeConcern);
 					break;
 				case 2: // buscar usuario
-					$f = ['codigo' => $_GET['mcodigo']];
-					$query = new MongoDB\Driver\Query($f,[]);
+					$query = new MongoDB\Driver\Query($filter,$options);
 					$rows = $m->executeQuery('Proyecto.usuarios', $query);
-					print_r($rows);
 					foreach($rows as $row){
-						$nombre = $row->nombre;
-						$apellido = $row->apellido;
-						$edad = $row->edad;
-						$usuario = $row->nickname;
-						$pass = $row->password;
-						print_r( "Exito!" );
-						break;
+						if($row->codigo == $_GET['mcodigo']){
+							$nombre = $row->nombre;
+							$apellido = $row->apellido;
+							$edad = $row->edad;
+							$usuario = $row->nickname;
+							$pass = $row->password;
+							print_r( "Exito!" );
+							break;
+						}
 					}
 					break;
 				case 3: // modificar usuario
