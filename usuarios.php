@@ -48,7 +48,7 @@
 					}
 					break;
 				case 3: // modificar usuario
-					$command = new MongoDB\Driver\Command(array('eval' => "db.usuarios.update({\"codigo\":".$_GET['mcodigo']."},{\"nombre\":\"".$_GET['mnombre'].\"",\"apellido\":\"".$_GET['mapellido']."\",\"edad\":".$_GET['medad'].",\"nickname\":\"".$_GET['musuario']."\",\"password\":\"".$_GET['mpassword']."\"});"));
+					$command = new MongoDB\Driver\Command(array('eval' => "db.usuarios.update({\"codigo\":".$_GET['mcodigo']."},{\"nombre\":\"".$_GET['mnombre']."\",\"apellido\":\"".$_GET['mapellido']."\",\"edad\":".$_GET['medad'].",\"nickname\":\"".$_GET['musuario']."\",\"password\":\"".$_GET['mpassword']."\"});"));
 					$cursor = $m->executeCommand('Proyecto', $command);
 					break;
 				case 4: // borrar usuario
