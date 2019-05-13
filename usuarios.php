@@ -101,14 +101,15 @@
 			</tr>
 			<?php
 				foreach($usuarios as $u){
-					echo "<td>".$u->codigo"</td>".PHP_EOL;
+					echo "<tr>".PHP_EOL."<td>".$u->codigo"</td>".PHP_EOL;
 					echo "<td>".$u->nombre"</td>".PHP_EOL;
 					echo "<td>".$u->apellido"</td>".PHP_EOL;
 					echo "<td>".$u->edad"</td>".PHP_EOL;
 					echo "<td>".$u->nickname"</td>".PHP_EOL;
-					echo "<td>".$u->password"</td>".PHP_EOL;
+					echo "<td>".$u->password"</td>".PHP_EOL."</tr>";
 				} 
 			?>
+			
 		</table>
 	</form>
 
