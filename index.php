@@ -13,7 +13,7 @@
 		if($rows->isDead()){ echo "El usuario no existe! Ingrese nuevamente."; }
 		else{
 			foreach($rows as $r){
-				echo $r->nickname;			
+				echo "Usuario: " . $r->nickname;			
 				$_SESSION['login'] = $r->nickname;
 			}
 			header("Location: menu.php");
