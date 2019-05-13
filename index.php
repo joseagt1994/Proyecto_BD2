@@ -21,7 +21,9 @@
 
 		//echo "Usuario: " . $rows . PHP_EOL;
 
-	}else { //echo "Ingrese los datos necesarios para ingresar!"; }
+	}else { 
+		//echo "Ingrese los datos necesarios para ingresar!"; 	
+	}
 
 ?>
 
