@@ -57,6 +57,7 @@
 					break;
 				case 4: // borrar usuario
 					print_r("Eliminando usuario ".$_GET['bcodigo']);
+					$bulk = new MongoDB\Driver\BulkWrite;
 					$bulk->delete(['codigo' => '48'], ['limit' => '1']);
 					$m->executeBulkWrite('Proyecto.usuarios', $bulk);
 					break;
