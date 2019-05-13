@@ -48,19 +48,10 @@
 					}
 					break;
 				case 3: // modificar usuario
-					$bulk->update(['codigo' => $_GET['mcodigo']], ['$set' => ['nombre' => $_GET['mnombre']]]);
-					$bulk->update(['codigo' => $_GET['mcodigo']], ['$set' => ['apellido' => $_GET['mapellido']]]);
-					$bulk->update(['codigo' => $_GET['mcodigo']], ['$set' => ['edad' => $_GET['medad']]]);
-					$bulk->update(['codigo' => $_GET['mcodigo']], ['$set' => ['nickname' => $_GET['musuario']]]);
-					$bulk->update(['codigo' => $_GET['mcodigo']], ['$set' => ['password' => $_GET['mpassword']]]);
-					$m->executeBulkWrite('Proyecto.usuarios', $bulk, $writeConcern);
+					$command = new MongoDB\Driver\Command(array('eval' => "db.usuarios.update({\"codigo\":".$_GET['mcodigo']."},{\"nombre\":\"".$_GET['mnombre'].\"",\"apellido\":\"".$_GET['mapellido']."\",\"edad\":".$_GET['medad'].",\"nickname\":\"".$_GET['musuario']."\",\"password\":\"".$_GET['mpassword']."\"});"));
+					$cursor = $m->executeCommand('Proyecto', $command);
 					break;
 				case 4: // borrar usuario
-					print_r("Eliminando usuario ".$_GET['bcodigo']);
-					//$bulk = new MongoDB\Driver\BulkWrite;
-					//$bulk->delete(['codigo' => '48'], ['limit' => '1']);
-					//$m = new MongoDB\Driver\Manager("mongodb://192.168.1.24:27017");
-					//$m->executeBulkWrite('Proyecto.usuarios', $bulk);
 					$command = new MongoDB\Driver\Command(array('eval' => "db.usuarios.remove({\"codigo\": ".$_GET['bcodigo']."})"));
 					$cursor = $m->executeCommand('Proyecto', $command);
 					break;
