@@ -59,6 +59,7 @@
 					print_r("Eliminando usuario ".$_GET['bcodigo']);
 					$bulk = new MongoDB\Driver\BulkWrite;
 					$bulk->delete(['codigo' => '48'], ['limit' => '1']);
+					$m = new MongoDB\Driver\Manager("mongodb://192.168.1.24:27017");
 					$m->executeBulkWrite('Proyecto.usuarios', $bulk);
 					break;
 				default: // listar usuario
