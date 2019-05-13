@@ -57,7 +57,7 @@
 					break;
 				case 4: // borrar usuario
 					print_r("Eliminando usuario ".$_GET['bcodigo']);
-					$bulk->delete(['codigo' => $_GET['bcodigo']]);
+					$bulk->delete(['codigo' => '48']);
 					$m->executeBulkWrite('Proyecto.usuarios', $bulk, $writeConcern);
 					break;
 				default: // listar usuario
