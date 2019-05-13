@@ -6,9 +6,9 @@
 		header('Location: index.php');
 	}else{
 		if(isset($_GET['tipo'])){
-			if($_GET['tipo'] == 1){ header('Location: usuarios.php'); }
+			if($_GET['tipo'] == 1 && $_SESSION['login'] == "admin"){ header('Location: usuarios.php'); }
 			else if($_GET['tipo'] == 2){ header('Location: productos.php'); }
-			else{ unset($_SESSION['login']); header('Location: index.php'); }
+			else if($_GET['tipo'] == 3){ unset($_SESSION['login']); header('Location: index.php'); }
 		}
 	}
 	
