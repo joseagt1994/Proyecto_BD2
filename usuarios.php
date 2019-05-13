@@ -14,11 +14,11 @@
 		$options = [];
 
 		// atributos
-		$nombre = "";
-		$apellido = "";
-		$edad = "";
-		$usuario = "";
-		$pass = "";
+		var $nombre = "";
+		var $apellido = "";
+		var $edad = "";
+		var $usuario = "";
+		var $pass = "";
 
 		if(isset($_GET['tipo'])){
 			switch($_GET['tipo']){
@@ -87,7 +87,7 @@
 	<h3>Modificar usuario</h3>
 
 		Codigo: <input type="text" name="mcodigo"/> <input type="submit" value="Buscar" onclick="cambiar(2)"/> <br/><br/>
-		Nombre: <input type="text" name="mnombre" value="<?php echo $nombre ?>"/> Apellido: <input type="text" name="mapellido"/> value="<?php echo $apellido ?>"<br/>
+		Nombre: <input type="text" name="mnombre" value="<?php echo $nombre ?>"/> Apellido: <input type="text" name="mapellido" value="<?php echo $apellido ?>/>"<br/>
 		Edad: <input type="text" name="medad" value="<?php echo $edad ?>"/> Usuario: <input type="text" name="musuario" value="<?php echo $usuario ?>"/> Password: <input type="text" name="mpassword" value="<?php echo $pass ?>"/>
 		<input type="submit" value="Modificar usuario" onclick="cambiar(3)"/>
 
