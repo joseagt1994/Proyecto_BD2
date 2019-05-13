@@ -48,7 +48,7 @@
 					}
 					break;
 				case 3: // modificar usuario
-					$command = new MongoDB\Driver\Command(array('eval' => "db.usuarios.update({\"codigo\":".$_GET['mcodigo']."},{\"nombre\":\"".$_GET['mnombre']."\",\"apellido\":\"".$_GET['mapellido']."\",\"edad\":".$_GET['medad'].",\"nickname\":\"".$_GET['musuario']."\",\"password\":\"".$_GET['mpassword']."\"});"));
+					$command = new MongoDB\Driver\Command(array('eval' => "db.usuarios.update({\"codigo\":".$_GET['mcodigo']."},{\"nombre\":\"".$_GET['mnombre']."\",\"apellido\":\"".$_GET['mapellido']."\",\"edad\":".$_GET['medad'].",\"nickname\":\"".$_GET['musuario']."\",\"password\":\"".$_GET['mpassword']."\",\"codigo\":".$_GET['mcodigo']."});"));
 					$cursor = $m->executeCommand('Proyecto', $command);
 					break;
 				case 4: // borrar usuario
@@ -83,7 +83,7 @@
 
 	<h3>Modificar usuario</h3>
 
-		Codigo: <input type="text" name="mcodigo"/> <input type="submit" value="Buscar" onclick="cambiar(2)"/> <br/><br/>
+		Codigo: <input type="text" name="mcodigo" value="<?php echo $codigo ?>"/> <input type="submit" value="Buscar" onclick="cambiar(2)"/> <br/><br/>
 		Nombre: <input type="text" name="mnombre" value="<?php echo $nombre ?>"/> Apellido: <input type="text" name="mapellido" value="<?php echo $apellido ?>"/><br/>
 		Edad: <input type="text" name="medad" value="<?php echo $edad ?>"/> Usuario: <input type="text" name="musuario" value="<?php echo $usuario ?>"/> Password: <input type="text" name="mpassword" value="<?php echo $pass ?>"/>
 		<input type="submit" value="Modificar usuario" onclick="cambiar(3)"/>
